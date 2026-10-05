@@ -306,9 +306,9 @@
       <h2 class="section-title">Project <span>Gallery</span></h2>
     </div>
     <div class="portfolio-tabs">
-      <button class="tab-btn active" onclick="showTab('framing')">Framing</button>
-      <button class="tab-btn" onclick="showTab('siding')">Siding</button>
-      <button class="tab-btn" onclick="showTab('roofing')">Roofing</button>
+      <button class="tab-btn active" onclick="showTab('roofing', this)'roofing', this)'framing')">Framing</button>
+      <button class="tab-btn" onclick="showTab('roofing', this)'roofing', this)'siding')">Siding</button>
+      <button class="tab-btn" onclick="showTab('roofing', this)'roofing', this)'roofing')">Roofing</button>
     </div>
 
     <!-- Framing -->
@@ -417,20 +417,24 @@
 </footer>
 
 <script>
-  const galleries = {
-    framing: ['fotos/framing1.jpg','fotos/framing2.jpg','fotos/framing3.jpg','fotos/framing4.jpg','fotos/framing5.jpg','fotos/framing6.jpg','fotos/framing7.jpg','fotos/framing8.jpg','fotos/framing9.jpg'],
-    siding:  ['fotos/siding1.jpg','fotos/siding2.jpg','fotos/siding3.jpg','fotos/siding4.jpg','fotos/siding5.jpg','fotos/siding6.jpg','fotos/siding7.jpg','fotos/siding8.jpg','fotos/siding9.jpg'],
-    roofing: ['fotos/roofing1.jpg','fotos/roofing2.jpg','fotos/roofing3.jpg','fotos/roofing4.jpg','fotos/roofing5.jpg','fotos/roofing6.jpg','fotos/roofing7.jpg','fotos/roofing8.jpg']
-  };
-  let currentGallery = 'framing', currentIndex = 0;
+  let currentGallery = 'roofing';
 
-  function showTab(tab) {
-    document.querySelectorAll('.gallery-grid').forEach(g => g.style.display = 'none');
-    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-    document.getElementById('tab-' + tab).style.display = 'grid';
-    event.target.classList.add('active');
+  function showTab(tab, btn) {
+    document.querySelectorAll('.gallery-grid').forEach(g => {
+      g.style.display = 'none';
+    });
+
+    document.querySelectorAll('.tab-btn').forEach(b => {
+      b.classList.remove('active');
+    });
+
+    const el = document.getElementById('tab-' + tab);
+    if (el) el.style.display = 'grid';
+
+    if (btn) btn.classList.add('active');
     currentGallery = tab;
   }
+</script>
 
   function openLightbox(gallery, index) {
     currentGallery = gallery; currentIndex = index;
