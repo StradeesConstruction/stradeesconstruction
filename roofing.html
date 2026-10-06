@@ -1,0 +1,518 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- ======= PRESERVAR HEAD/SEO DO SEU SITE (COMO VOCÊ ENVIOU) ======= -->
+  <!-- Obs: aqui estou usando exatamente o que você mandou no trecho inicial:
+       CSS + JSON-LD + scripts que vieram antes de <body>.
+       Se seu head completo tiver mais tags (title, meta og, etc), cole-as aqui no arquivo final. -->
+
+  <style>
+    /* ---------- GALLERY ---------- */
+    .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
+    .gallery figure{position:relative;overflow:hidden;border-radius:12px;aspect-ratio:4/3;background:var(--line)}
+    .gallery img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+    .gallery figure:hover img{transform:scale(1.04)}
+
+    /* ---------- SERVICE AREA ---------- */
+    .cities{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+    .cities span{background:#fff;border:1px solid var(--line);border-radius:999px;padding:8px 16px;font-size:14px;font-weight:500;color:var(--muted)}
+
+    /* ---------- FORM ---------- */
+    .form-wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:start}
+    .form-side h2{margin-bottom:14px}
+    .form-contact{margin-top:30px;display:grid;gap:14px}
+    .form-contact a{display:flex;align-items:center;gap:12px;font-size:17px;font-weight:600}
+    .form-contact svg{color:var(--green);flex:0 0 20px}
+    .form-note{margin-top:24px;font-size:14px;color:var(--muted);line-height:1.6}
+    form.estimate{background:#fff;border:1px solid var(--line);border-radius:14px;padding:34px;box-shadow:0 4px 28px rgba(16,40,16,.06)}
+    .field{margin-bottom:18px}
+    .field label{display:block;font-size:13.5px;font-weight:600;margin-bottom:7px}
+    .field input,.field select,.field textarea{width:100%;padding:13px 15px;border:1px solid var(--line);border-radius:8px;
+      font-family:inherit;font-size:15px;background:#fff;color:var(--ink);transition:border-color .2s}
+    .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--green)}
+    .field-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    form.estimate .btn-primary{width:100%;margin-top:6px}
+    .form-msg{margin-top:16px;padding:14px 16px;border-radius:8px;font-size:15px;display:none}
+    .form-msg.ok{display:block;background:#e9f9ef;border:1px solid var(--green);color:#14532d}
+    .form-msg.err{display:block;background:#fdecec;border:1px solid #e57373;color:#7f1d1d}
+    .hp{position:absolute;left:-9999px}
+
+    /* ---------- FOOTER ---------- */
+    footer{background:var(--green-deep);color:rgba(255,255,255,.6);text-align:center;padding:54px 20px 110px}
+    footer img{height:62px;width:auto;margin:0 auto 20px;background:#fff;border-radius:8px;padding:6px}
+    footer p{font-size:14px;margin-bottom:8px}
+    footer a{color:var(--green)}
+
+    /* ---------- MOBILE CALL BAR ---------- */
+    .callbar{position:fixed;bottom:0;left:0;right:0;z-index:99;display:none;grid-template-columns:1fr 1fr;
+      background:var(--green-deep);border-top:1px solid rgba(255,255,255,.12)}
+    .callbar a{padding:16px 10px;text-align:center;font-weight:700;font-size:15px;color:#fff}
+    .callbar a.call{background:var(--green)}
+
+    /* ---------- RESPONSIVE ---------- */
+    @media(max-width:980px){
+      .trustbar ul{grid-template-columns:repeat(2,1fr)}
+      .cards,.steps,.gallery{grid-template-columns:repeat(2,1fr)}
+      .why-grid{grid-template-columns:repeat(2,1fr)}
+      .split,.form-wrap{grid-template-columns:1fr;gap:34px}
+    }
+    @media(max-width:720px){
+      .nav-links{display:none}
+      .nav-logo img{height:44px}
+      nav{padding:10px 16px}
+      .hero{min-height:auto;padding:120px 18px 70px}
+      section.band,.why{padding:56px 18px}
+      .cards,.steps,.checks,.gallery{grid-template-columns:1fr}
+      .why-grid{grid-template-columns:1fr}
+      .field-row{grid-template-columns:1fr}
+      form.estimate{padding:24px 20px}
+      .callbar{display:grid}
+      .btn-row .btn{width:100%}
+    }
+
+    .hero{background-image:url('fotos/roofing1.jpg')}
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"HomeAndConstructionBusiness",
+    "name":"Stradees Construction",
+    "image":"https://stradeesconstruction.com/fotos/logo.png",
+    "url":"https://stradeesconstruction.com/roofing.html",
+    "telephone":"+1-774-686-9306",
+    "email":"stradees@stradees.com",
+    "address":{"@type":"PostalAddress","streetAddress":"397 Williams Street","addressLocality":"Marlborough","addressRegion":"MA","postalCode":"01752","addressCountry":"US"},
+    "areaServed":{"@type":"State","name":"Massachusetts"},
+    "priceRange":"$$"
+  }
+  </script>
+</head>
+
+<body>
+
+<!-- ============ NAV ============ -->
+<nav>
+  <a href="index.html" class="nav-logo"><img src="fotos/logo.png" alt="Stradees Construction"></a>
+  <ul class="nav-links">
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="#gallery">Portfolio</a></li>
+    <li><a href="#estimate">Contact</a></li>
+  </ul>
+  <a href="#estimate" class="nav-cta">Free Estimate</a>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="hero-inner">
+    <span class="eyebrow">Roof Installation &amp; Replacement &bull; Massachusetts</span>
+    <h1>A Stronger Roof.<span class="accent">Better Protection.</span></h1>
+    <p class="lede">Professional roof installation, replacement and repair for Massachusetts homes — quality materials, careful waterproofing and workmanship built for New England weather.</p>
+    <p class="materials">Architectural Shingles &bull; Metal &bull; EPDM / Rubber &bull; Flat Roofing &bull; Cedar</p>
+    <div class="btn-row">
+      <a href="#estimate" class="btn btn-primary">Get a Free Roof Estimate</a>
+      <a href="#gallery" class="btn btn-ghost">View Our Work</a>
+    </div>
+  </div>
+</header>
+
+<!-- ============ TRUST BAR ============ -->
+<div class="trustbar">
+  <ul>
+      <li><svg viewBox="0 0 20 20" fill="currentColor" width="20" height="20" aria-hidden="true"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.7-9.3a1 1 0 00-1.4-1.4L9 10.6 7.7 9.3a1 1 0 00-1.4 1.4l2 2a1 1 0 001.4 0l4-4z"/></svg><span>Licensed &amp; Insured in Massachusetts</span></li>
+      <li><svg viewBox="0 0 20 20" fill="currentColor" width="20" height="20" aria-hidden="true"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.7-9.3a1 1 0 00-1.4-1.4L9 10.6 7.7 9.3a1 1 0 00-1.4 1.4l2 2a1 1 0 001.4 0l4-4z"/></svg><span>500+ Projects Completed</span></li>
+      <li><svg viewBox="0 0 20 20" fill="currentColor" width="20" height="20" aria-hidden="true"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.7-9.3a1 1 0 00-1.4-1.4L9 10.6 7.7 9.3a1 1 0 00-1.4 1.4l2 2a1 1 0 001.4 0l4-4z"/></svg><span>Residential &amp; Light Commercial Experience</span></li>
+      <li><svg viewBox="0 0 20 20" fill="currentColor" width="20" height="20" aria-hidden="true"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.7-9.3a1 1 0 00-1.4-1.4L9 10.6 7.7 9.3a1 1 0 00-1.4 1.4l2 2a1 1 0 001.4 0l4-4z"/></svg><span>Built for New England Conditions</span></li>
+  </ul>
+</div>
+
+<!-- ============ SERVICE INTRO ============ -->
+<section class="band">
+  <div class="wrap split">
+    <div>
+      <p class="sec-eyebrow">Why It Matters</p>
+      <h2>Roofing That <span class='accent'>Protects Your Investment</span></h2>
+      <p class="sec-lede">A roofing system must do more than look good. It needs to manage water, ice, snow, ventilation and flashing details correctly. Stradees Construction provides complete roofing solutions for residential and light-commercial projects throughout Massachusetts.</p>
+      <div style="margin-top:30px"><a href="#estimate" class="btn btn-primary">Get a Free Roof Estimate</a></div>
+    </div>
+    <img src="fotos/roofing4.jpg" alt="Stradees Construction roofing project in Massachusetts" loading="lazy" width="800" height="600">
+  </div>
+</section>
+
+<!-- ============ OPTIONS / MATERIALS ============ -->
+<section class="band alt">
+  <div class="wrap">
+    <p class="sec-eyebrow">Options &amp; Materials</p>
+    <h2>Roofing Systems We Install</h2>
+    <div class="cards">
+        <article class="card"><h3>Architectural Asphalt Shingles</h3><p>The go-to residential roofing system for durability, appearance and value.</p></article>
+        <article class="card"><h3>Metal / Standing Seam Roofing</h3><p>A premium long-life option with a clean architectural appearance and excellent weather performance.</p></article>
+        <article class="card"><h3>EPDM / Rubber Roofing</h3><p>A proven membrane system for flat and low-slope roofs, additions, porches and commercial applications.</p></article>
+        <article class="card"><h3>TPO / PVC Roofing</h3><p>Single-ply membrane options commonly used on flat and low-slope commercial or multifamily roofs.</p></article>
+        <article class="card"><h3>Cedar Roofing</h3><p>Natural wood shingles and shakes for distinctive traditional and premium homes.</p></article>
+        <article class="card"><h3>Slate Roofing</h3><p>A premium traditional roofing material valued for appearance and exceptional longevity.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHAT WE DO ============ -->
+<section class="band">
+  <div class="wrap">
+    <p class="sec-eyebrow">Scope of Work</p>
+    <h2>What We Do</h2>
+    <ul class="checks">
+        <li><svg viewBox="0 0 20 20" fill="currentColor" width="20" height="20" aria-hidden="true"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.7-9.3a1 1 0 00-1.4-1.4L9 10.6 7.7 9.3a1 1 0 00-1.4 1.4l2 2a1 1 0 001.4 0l4-4z"/></svg><span>New roof installation</span></li>
+        <li><svg viewBox="0 0 20 20" fill="currentColor" width="20" height="20" aria-hidden="true"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.7-9.3a1 1 0 00-1.4-1.4L9 10.6 7.7 9.3a1 1 0 00-1.4 1.4l2 2a1 1 0 001.4 0l4-4z"/></svg><span>Complete roof replacement</span></li>
+        <li><svg viewBox="0 0 20 20" fill="currentColor" width="20" height="20" aria-hidden="true"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.7-9.3a1 1 0 00-1.4-1.4L9 10.6 7.7 9.3a1 1 0 00-1.4 1.4l2 2a1 1 0 001.4 0l4-4z"/></svg><span>Roof repairs</span></li>
+        <li><svg viewBox="0 0 20 20" fill="currentColor" width="20" height="20" aria-hidden="true"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.7-9.3a1 1 0 00-1.4-1.4L9 10.6 7.7 9.3a1 1 0 00-1.4 1.4l2 2a1 1 0 001.4 0l4-4z"/></svg><span>Flat &amp; low-slope roofing</span></li>
+        <li><svg viewBox="0 0 20 20" fill="currentColor" width="20" height="20" aria-hidden="true"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.7-9.3a1 1 0 00-1.4-1.4L9 10.6 7.7 9.3a1 1 0 00-1.4 1.4l2 2a1 1 0 001.4 0l4-4z"/></svg><span>Ice &amp; water protection</span></li>
+        <li><svg viewBox="0 0 20 20" fill="currentColor" width="20" height="20" aria-hidden="true"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.7-9.3a1 1 0 00-1.4-1.4L9 10.6 7.7 9.3a1 1 0 00-1.4 1.4l2 2a1 1 0 001.4 0l4-4z"/></svg><span>Flashing and drip edge</span></li>
+        <li><svg viewBox="0 0 20 20" fill="currentColor" width="20" height="20" aria-hidden="true"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.7-9.3a1 1 0 00-1.4-1.4L9 10.6 7.7 9.3a1 1 0 00-1.4 1.4l2 2a1 1 0 001.4 0l4-4z"/></svg><span>Roof ventilation</span></li>
+        <li><svg viewBox="0 0 20 20" fill="currentColor" width="20" height="20" aria-hidden="true"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.7-9.3a1 1 0 00-1.4-1.4L9 10.6 7.7 9.3a1 1 0 00-1.4 1.4l2 2a1 1 0 001.4 0l4-4z"/></svg><span>Roofing for additions and remodels</span></li>
+    </ul>
+    <div class="center-cta"><a href="#estimate" class="btn btn-primary">Get a Free Roof Estimate</a></div>
+  </div>
+</section>
+
+<!-- ============ WHY STRADEES ============ -->
+<section class="why">
+  <div class="wrap">
+    <p class="sec-eyebrow">Why Choose Stradees</p>
+    <h2>Built on Trust, <span class="accent">Driven by Quality.</span></h2>
+    <p class="sec-lede">Stradees Construction serves homeowners and General Contractors across Massachusetts with a focus on professional execution, clear communication and exterior work built to last.</p>
+    <div class="why-grid">
+        <div class="why-item">Licensed &amp; Insured in Massachusetts</div>
+        <div class="why-item">500+ Projects Completed</div>
+        <div class="why-item">Residential &amp; Light Commercial Experience</div>
+        <div class="why-item">Built for New England Conditions</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROCESS ============ -->
+<section class="band">
+  <div class="wrap">
+    <p class="sec-eyebrow">Our Process</p>
+    <h2>Six Steps, No Surprises</h2>
+    <div class="steps">
+        <div class="step"><div class="step-num">01</div><h3>Consultation</h3><p>Tell us about your project and goals.</p></div>
+        <div class="step"><div class="step-num">02</div><h3>Site Visit</h3><p>We review existing conditions, measurements and project details.</p></div>
+        <div class="step"><div class="step-num">03</div><h3>Written Estimate</h3><p>Receive a clear scope and project price.</p></div>
+        <div class="step"><div class="step-num">04</div><h3>Scheduling</h3><p>We coordinate materials, crew and project timing.</p></div>
+        <div class="step"><div class="step-num">05</div><h3>Installation</h3><p>Our team completes the work with attention to details and site organization.</p></div>
+        <div class="step"><div class="step-num">06</div><h3>Final Walkthrough</h3><p>We review the completed work with you.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GALLERY ============ -->
+<section class="band alt" id="gallery">
+  <div class="wrap">
+    <p class="sec-eyebrow">Project Gallery</p>
+    <h2>Real Projects. <span class="accent">Real Craftsmanship.</span></h2>
+
+    <!-- gallery lightbox: clique nas figuras -->
+    <div class="gallery" data-gallery="roofing">
+        <figure><img src="fotos/roofing1.jpg" alt="Stradees Construction roofing project in Massachusetts" loading="lazy" width="800" height="600"></figure>
+        <figure><img src="fotos/roofing2.jpg" alt="Stradees Construction roofing project in Massachusetts" loading="lazy" width="800" height="600"></figure>
+        <figure><img src="fotos/roofing3.jpg" alt="Stradees Construction roofing project in Massachusetts" loading="lazy" width="800" height="600"></figure>
+        <figure><img src="fotos/roofing4.jpg" alt="Stradees Construction roofing project in Massachusetts" loading="lazy" width="800" height="600"></figure>
+        <figure><img src="fotos/roofing5.jpg" alt="Stradees Construction roofing project in Massachusetts" loading="lazy" width="800" height="600"></figure>
+        <figure><img src="fotos/roofing8.jpg" alt="Stradees Construction roofing project in Massachusetts" loading="lazy" width="800" height="600"></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICE AREA ============ -->
+<section class="band">
+  <div class="wrap">
+    <p class="sec-eyebrow">Service Area</p>
+    <h2>Serving Homeowners Across Massachusetts</h2>
+    <p class="sec-lede">Based in Marlborough and working throughout MetroWest and Central Massachusetts.</p>
+    <div class="cities">
+        <span>Marlborough</span>
+        <span>Northborough</span>
+        <span>Westborough</span>
+        <span>Hudson</span>
+        <span>Sudbury</span>
+        <span>Framingham</span>
+        <span>Natick</span>
+        <span>Shrewsbury</span>
+        <span>Southborough</span>
+        <span>Ashland</span>
+        <span>Worcester</span>
+        <span>Holliston</span>
+        <span>Wayland</span>
+        <span>Weston</span>
+        <span>Acton</span>
+        <span>Concord</span>
+        <span>Maynard</span>
+        <span>Stow</span>
+        <span>Bolton</span>
+        <span>Berlin</span>
+        <span>Grafton</span>
+        <span>Clinton</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ESTIMATE FORM ============ -->
+<section class="band alt" id="estimate">
+  <div class="wrap form-wrap">
+    <div class="form-side">
+      <p class="sec-eyebrow">Free Estimate</p>
+      <h2>Request a <span class="accent">Free Estimate</span></h2>
+      <p class="sec-lede">Ready to discuss your project? Send us a few details and our team will contact you.</p>
+
+      <div class="form-contact">
+        <a href="tel:+17746869306">
+          <svg viewBox="0 0 20 20" fill="currentColor" width="20" height="20" aria-hidden="true"><path d="M2 3.5A1.5 1.5 0 013.5 2h1.1a1.5 1.5 0 011.4 1l.7 2a1.5 1.5 0 01-.4 1.6l-.9.8a11 11 0 005.2 5.2l.8-.9a1.5 1.5 0 011.6-.4l2 .7a1.5 1.5 0 011 1.4v1.1a1.5 1.5 0 01-1.5 1.5A13.5 13.5 0 012 3.5z"/></svg>
+          <span>(774) 686-9306</span>
+        </a>
+        <a href="mailto:stradees@stradees.com">
+          <svg viewBox="0 0 20 20" fill="currentColor" width="20" height="20" aria-hidden="true"><path d="M2 5.5A1.5 1.5 0 013.5 4h13A1.5 1.5 0 0118 5.5v9a1.5 1.5 0 01-1.5 1.5h-13A1.5 1.5 0 012 14.5v-9zm2.2.5l5.8 4.3L15.8 6H4.2z"/></svg>
+          <span>stradees@stradees.com</span>
+        </a>
+      </div>
+
+      <p class="form-note">397 Williams Street, Marlborough, MA 01752<br>Licensed &amp; Insured in Massachusetts</p>
+    </div>
+
+    <form class="estimate" id="estimateForm" novalidate>
+      <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <input type="hidden" name="service" value="roofing">
+      <input type="hidden" name="page_url" id="pageUrl">
+      <input type="hidden" name="source" id="leadSource">
+
+      <div class="field-row">
+        <div class="field">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required autocomplete="name">
+        </div>
+        <div class="field">
+          <label for="phone">Phone</label>
+          <input type="tel" id="phone" name="phone" required autocomplete="tel">
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required autocomplete="email">
+        </div>
+        <div class="field">
+          <label for="zip">ZIP Code</label>
+          <input type="text" id="zip" name="zip" required inputmode="numeric" maxlength="5" autocomplete="postal-code">
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="project_type">Project Type</label>
+        <select id="project_type" name="project_type" required>
+          <option value="">Select one…</option>
+          <option>Replacement</option>
+          <option>New Roof</option>
+          <option>Repair</option>
+          <option>Flat Roof</option>
+          <option>Not Sure</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="contact_method">Preferred Contact Method</label>
+        <select id="contact_method" name="contact_method">
+          <option value="">Select one…</option>
+          <option>Phone call</option>
+          <option>Text message</option>
+          <option>Email</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="message">Project Details <span style="font-weight:400;color:#8a998a">(optional)</span></label>
+        <textarea id="message" name="message" rows="3"></textarea>
+      </div>
+
+      <button type="submit" class="btn btn-primary" id="submitBtn">Get a Free Roof Estimate</button>
+      <div class="form-msg" id="formMsg" role="status" aria-live="polite"></div>
+    </form>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <img src="fotos/logo.png" alt="Stradees Construction">
+  <p>&copy; 2026 Stradees Construction. All rights reserved.</p>
+  <p>397 Williams Street, Marlborough, MA 01752 | <a href="tel:+17746869306">(774) 686-9306</a> | <a href="mailto:stradees@stradees.com">stradees@stradees.com</a></p>
+  <p>Licensed &amp; Insured in Massachusetts</p>
+</footer>
+
+<!-- ============ MOBILE CALL BAR ============ -->
+<div class="callbar">
+  <a href="tel:+17746869306" class="call" onclick="trackLead('phone_call')">Call Now</a>
+  <a href="#estimate">Free Estimate</a>
+</div>
+
+<!-- ================= LIGHTBOX + TAB FIX (SAFE DEFAULTS) ================= -->
+<script>
+  // ---------- LIGHTBOX (mínimo compatível) ----------
+  // Se o seu site já tem lightbox global, esta seção pode ser redundante.
+  // Ela é “safe”: só ativa se não houver um lightbox já definido.
+  (function(){
+    // Se já existir uma função de lightbox, não atrapalha
+    if (typeof openLightbox === 'function') return;
+
+    const galleryEl = document.querySelector('.gallery[data-gallery="roofing"]');
+    if (!galleryEl) return;
+
+    const images = Array.from(galleryEl.querySelectorAll('img'));
+    let currentIndex = 0;
+
+    // cria modal simples apenas se não existir
+    if (!document.getElementById('lightboxModal')) {
+      const modal = document.createElement('div');
+      modal.id = 'lightboxModal';
+      modal.style.cssText = `
+        position:fixed;inset:0;background:rgba(0,0,0,.8);
+        display:none;align-items:center;justify-content:center;z-index:9999;
+        padding:24px;
+      `;
+      modal.innerHTML = `
+        <div style="max-width:1100px;width:100%;display:flex;flex-direction:column;gap:12px">
+          <img id="lightboxImg" style="width:100%;height:auto;border-radius:14px;object-fit:contain;background:#111" />
+          <div style="display:flex;gap:10px;justify-content:space-between;align-items:center">
+            <button type="button" id="lightboxPrev" class="btn btn-ghost" style="padding:10px 14px;border-radius:10px;border:1px solid rgba(255,255,255,.25);color:#fff;background:transparent;cursor:pointer">Prev</button>
+            <button type="button" id="lightboxNext" class="btn btn-ghost" style="padding:10px 14px;border-radius:10px;border:1px solid rgba(255,255,255,.25);color:#fff;background:transparent;cursor:pointer">Next</button>
+          </div>
+          <button type="button" id="lightboxClose" style="align-self:flex-end;padding:10px 14px;border-radius:10px;border:1px solid rgba(255,255,255,.25);color:#fff;background:transparent;cursor:pointer">Close</button>
+        </div>
+      `;
+      document.body.appendChild(modal);
+
+      const imgEl = modal.querySelector('#lightboxImg');
+
+      const render = (idx) => {
+        currentIndex = (idx + images.length) % images.length;
+        imgEl.src = images[currentIndex].src;
+        imgEl.alt = images[currentIndex].alt || 'Gallery image';
+      };
+
+      const show = (idx) => {
+        render(idx);
+        modal.style.display = 'flex';
+      };
+
+      const hide = () => { modal.style.display = 'none'; };
+
+      modal.querySelector('#lightboxClose').addEventListener('click', hide);
+      modal.querySelector('#lightboxPrev').addEventListener('click', () => render(currentIndex - 1));
+      modal.querySelector('#lightboxNext').addEventListener('click', () => render(currentIndex + 1));
+
+      window.addEventListener('keydown', (e) => {
+        if (modal.style.display !== 'flex') return;
+        if (e.key === 'Escape') hide();
+        if (e.key === 'ArrowLeft') render(currentIndex - 1);
+        if (e.key === 'ArrowRight') render(currentIndex + 1);
+      });
+
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) hide();
+      });
+
+      // expõe para compatibilidade
+      window.openLightbox = (idx) => show(idx);
+
+      images.forEach((im, i) => {
+        im.style.cursor = 'zoom-in';
+        im.addEventListener('click', (e) => {
+          e.preventDefault();
+          show(i);
+        });
+      });
+    } else {
+      // se modal já existe, não mexe
+    }
+  })();
+
+  // ---------- SHOWTAB FIX (sem event global) ----------
+  // Se o seu site usa showTab com abas, esta versão evita "event is not defined".
+  window.showTab = function(btnEl, tabId) {
+    // btnEl pode ser o "this" do onclick
+    // tabId é o id da aba alvo
+    if (btnEl && btnEl.preventDefault) btnEl.preventDefault();
+
+    const tabs = document.querySelectorAll('[data-tab]');
+    tabs.forEach(t => t.style.display = 'none');
+
+    const tab = document.getElementById(tabId);
+    if (tab) tab.style.display = 'block';
+
+    // ativa estado visual do botão (se existir)
+    document.querySelectorAll('[data-tab-btn]').forEach(b => b.classList.remove('active'));
+    if (btnEl && btnEl.classList) btnEl.classList.add('active');
+  };
+</script>
+
+<script>
+/* =====================================================================
+   CONFIGURACAO — TROCAR ESTAS DUAS LINHAS
+   ===================================================================== */
+const FORM_ENDPOINT = 'https://formspree.io/f/xeaqaygo';
+const GOOGLE_ADS    = '';
+
+function trackLead(type){
+  if (GOOGLE_ADS && typeof gtag === 'function') {
+    gtag('event', 'conversion', { send_to: GOOGLE_ADS, event_category: type });
+  }
+}
+
+document.getElementById('pageUrl').value = location.href;
+document.getElementById('leadSource').value =
+  new URLSearchParams(location.search).get('utm_source') || document.referrer || 'direct';
+
+const form = document.getElementById('estimateForm');
+const msg  = document.getElementById('formMsg');
+const btn  = document.getElementById('submitBtn');
+
+form.addEventListener('submit', async function (e) {
+  e.preventDefault();
+  msg.className = 'form-msg';
+
+  if (!form.checkValidity()) {
+    msg.className = 'form-msg err';
+    msg.textContent = 'Please fill in your name, phone, email and ZIP code.';
+    return;
+  }
+
+  btn.disabled = true;
+  btn.textContent = 'Sending…';
+
+  try {
+    const res = await fetch(FORM_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: new FormData(form)
+    });
+
+    if (!res.ok) throw new Error('bad response');
+
+    form.reset();
+    msg.className = 'form-msg ok';
+    msg.textContent = 'Thank you. We received your request and will contact you shortly.';
+    trackLead('form_submit');
+  } catch (err) {
+    msg.className = 'form-msg err';
+    msg.innerHTML = 'Something went wrong. Please call us at <a href="tel:+17746869306" style="color:inherit;text-decoration:underline">(774) 686-9306</a>.';
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Get a Free Roof Estimate';
+  }
+});
+</script>
+
+</body>
+</html>
