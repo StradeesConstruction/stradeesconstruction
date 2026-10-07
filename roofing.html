@@ -1,12 +1,174 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Roofing Installation, Replacement & Repair in Massachusetts | Stradees Construction</title>
+<meta name="description" content="Professional roofing installation, replacement and repair in Massachusetts. Architectural shingles, metal, EPDM, flat roofing and cedar. Request a free estimate.">
+<link rel="canonical" href="https://stradeesconstruction.com/roofing.html">
+<meta property="og:title" content="Roofing Installation, Replacement & Repair in Massachusetts | Stradees Construction">
+<meta property="og:description" content="Professional roofing installation, replacement and repair in Massachusetts. Quality materials and workmanship built for New England weather.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://stradeesconstruction.com/roofing.html">
+<meta property="og:image" content="https://stradeesconstruction.com/fotos/roofing1.jpg">
+<link rel="icon" href="fotos/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --green:#22c55e; --green-dark:#16a34a; --green-deep:#0a1a0a;
+  --ink:#1a1a1a; --muted:#5a6b5a; --soft:#f8faf8; --line:#e6ece6;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(--ink);background:#fff;line-height:1.6;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1160px;margin:0 auto;padding:0 20px}
 
-  <!-- ======= PRESERVAR HEAD/SEO DO SEU SITE (COMO VOCÊ ENVIOU) ======= -->
-  <!-- Obs: aqui estou usando exatamente o que você mandou no trecho inicial:
-       CSS + JSON-LD + scripts que vieram antes de <body>.
+/* ---------- NAV ---------- */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;
+  padding:14px 24px;background:rgba(10,30,10,.85);backdrop-filter:blur(10px)}
+.nav-logo img{height:52px;width:auto;background:#fff;border-radius:6px;padding:4px}
+.nav-links{display:flex;gap:30px;list-style:none}
+.nav-links a{color:rgba(255,255,255,.88);font-size:15px;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:var(--green)}
+.nav-cta{background:var(--green);color:#fff;padding:12px 24px;border-radius:8px;font-weight:600;font-size:15px;transition:background .2s}
+.nav-cta:hover{background:var(--green-dark)}
+
+/* ---------- HERO ---------- */
+.hero{position:relative;min-height:88vh;display:flex;align-items:center;padding:140px 24px 90px;
+  background-size:cover;background-position:center;background-repeat:no-repeat}
+.hero::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,20,6,.82) 0%,rgba(6,20,6,.74) 45%,rgba(6,20,6,.9) 100%)}
+.hero-inner{position:relative;z-index:2;max-width:860px;margin:0 auto;text-align:center;color:#fff}
+.eyebrow{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--green);margin-bottom:22px}
+.hero h1{font-size:clamp(38px,6vw,62px);font-weight:900;line-height:1.05;letter-spacing:-.02em;margin-bottom:24px}
+.hero h1 .accent{color:var(--green);display:block}
+.hero p.lede{font-size:clamp(16px,2vw,19px);color:rgba(255,255,255,.88);max-width:700px;margin:0 auto 20px}
+.materials{font-size:14px;font-weight:600;letter-spacing:.04em;color:rgba(255,255,255,.72);margin-bottom:34px}
+.btn-row{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-block;padding:16px 32px;border-radius:8px;font-weight:600;font-size:15px;transition:.2s;cursor:pointer;border:none;font-family:inherit}
+.btn-primary{background:var(--green);color:#fff}
+.btn-primary:hover{background:var(--green-dark);transform:translateY(-1px)}
+.btn-ghost{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.55)}
+.btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.08)}
+
+/* ---------- TRUST BAR ---------- */
+.trustbar{background:var(--green-deep);padding:26px 20px}
+.trustbar ul{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;list-style:none;max-width:1160px;margin:0 auto}
+.trustbar li{display:flex;align-items:center;gap:10px;color:rgba(255,255,255,.9);font-size:14.5px;font-weight:500}
+.trustbar svg{flex:0 0 18px;color:var(--green)}
+
+/* ---------- SECTIONS ---------- */
+section.band{padding:78px 20px}
+section.alt{background:var(--soft)}
+.sec-eyebrow{font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--green);margin-bottom:14px}
+h2{font-size:clamp(28px,4vw,40px);font-weight:800;line-height:1.15;letter-spacing:-.02em;margin-bottom:18px}
+h2 .accent{color:var(--green)}
+.sec-lede{font-size:17px;color:var(--muted);max-width:680px}
+
+.split{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+.split img{border-radius:12px;aspect-ratio:4/3;object-fit:cover;width:100%}
+
+/* ---------- CARDS ---------- */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:40px}
+.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:28px 26px;transition:.2s}
+.card:hover{border-color:var(--green);box-shadow:0 6px 24px rgba(16,40,16,.07);transform:translateY(-2px)}
+.card h3{font-size:18px;font-weight:700;margin-bottom:10px}
+.card p{font-size:15px;color:var(--muted)}
+
+/* ---------- CHECKLIST ---------- */
+.checks{display:grid;grid-template-columns:repeat(2,1fr);gap:14px 32px;margin-top:34px;list-style:none}
+.checks li{display:flex;align-items:flex-start;gap:12px;font-size:16px;padding:12px 0;border-bottom:1px solid var(--line)}
+.checks svg{flex:0 0 20px;margin-top:3px;color:var(--green)}
+.center-cta{text-align:center;margin-top:44px}
+
+/* ---------- WHY (dark) ---------- */
+.why{background:var(--green-deep);color:#fff;padding:78px 20px}
+.why h2{color:#fff}
+.why .sec-lede{color:rgba(255,255,255,.75)}
+.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:44px}
+.why-item{border-top:2px solid var(--green);padding-top:18px;font-size:15.5px;font-weight:600;color:rgba(255,255,255,.92)}
+
+/* ---------- PROCESS ---------- */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;margin-top:44px}
+.step-num{font-size:34px;font-weight:900;color:var(--green);line-height:1;margin-bottom:10px}
+.step h3{font-size:17px;font-weight:700;margin-bottom:6px}
+.step p{font-size:15px;color:var(--muted)}
+
+/* ---------- GALLERY ---------- */
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
+.gallery figure{position:relative;overflow:hidden;border-radius:12px;aspect-ratio:4/3;background:var(--line)}
+.gallery img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.gallery figure:hover img{transform:scale(1.04)}
+
+/* ---------- SERVICE AREA ---------- */
+.cities{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.cities span{background:#fff;border:1px solid var(--line);border-radius:999px;padding:8px 16px;font-size:14px;font-weight:500;color:var(--muted)}
+
+/* ---------- FORM ---------- */
+.form-wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:start}
+.form-side h2{margin-bottom:14px}
+.form-contact{margin-top:30px;display:grid;gap:14px}
+.form-contact a{display:flex;align-items:center;gap:12px;font-size:17px;font-weight:600}
+.form-contact svg{color:var(--green);flex:0 0 20px}
+.form-note{margin-top:24px;font-size:14px;color:var(--muted);line-height:1.6}
+form.estimate{background:#fff;border:1px solid var(--line);border-radius:14px;padding:34px;box-shadow:0 4px 28px rgba(16,40,16,.06)}
+.field{margin-bottom:18px}
+.field label{display:block;font-size:13.5px;font-weight:600;margin-bottom:7px}
+.field input,.field select,.field textarea{width:100%;padding:13px 15px;border:1px solid var(--line);border-radius:8px;
+  font-family:inherit;font-size:15px;background:#fff;color:var(--ink);transition:border-color .2s}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--green)}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+form.estimate .btn-primary{width:100%;margin-top:6px}
+.form-msg{margin-top:16px;padding:14px 16px;border-radius:8px;font-size:15px;display:none}
+.form-msg.ok{display:block;background:#e9f9ef;border:1px solid var(--green);color:#14532d}
+.form-msg.err{display:block;background:#fdecec;border:1px solid #e57373;color:#7f1d1d}
+.hp{position:absolute;left:-9999px}
+
+/* ---------- FOOTER ---------- */
+footer{background:var(--green-deep);color:rgba(255,255,255,.6);text-align:center;padding:54px 20px 110px}
+footer img{height:62px;width:auto;margin:0 auto 20px;background:#fff;border-radius:8px;padding:6px}
+footer p{font-size:14px;margin-bottom:8px}
+footer a{color:var(--green)}
+
+/* ---------- MOBILE CALL BAR ---------- */
+.callbar{position:fixed;bottom:0;left:0;right:0;z-index:99;display:none;grid-template-columns:1fr 1fr;
+  background:var(--green-deep);border-top:1px solid rgba(255,255,255,.12)}
+.callbar a{padding:16px 10px;text-align:center;font-weight:700;font-size:15px;color:#fff}
+.callbar a.call{background:var(--green)}
+
+/* ---------- RESPONSIVE ---------- */
+@media(max-width:980px){
+  .trustbar ul{grid-template-columns:repeat(2,1fr)}
+  .cards,.steps,.gallery{grid-template-columns:repeat(2,1fr)}
+  .why-grid{grid-template-columns:repeat(2,1fr)}
+  .split,.form-wrap{grid-template-columns:1fr;gap:34px}
+}
+@media(max-width:720px){
+  .nav-links{display:none}
+  .nav-logo img{height:44px}
+  nav{padding:10px 16px}
+  .hero{min-height:auto;padding:120px 18px 70px}
+  section.band,.why{padding:56px 18px}
+  .cards,.steps,.checks,.gallery{grid-template-columns:1fr}
+  .why-grid{grid-template-columns:1fr}
+  .field-row{grid-template-columns:1fr}
+  form.estimate{padding:24px 20px}
+  .callbar{display:grid}
+  .btn-row .btn{width:100%}
+}
+
+/* hero image */
+.hero{background-image:url('fotos/siding1.jpg')}
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"HomeAndConstructionBusiness","name":"Stradees Construction","image":"https://stradeesconstruction.com/fotos/logo.png","url":"https://stradeesconstruction.com/roofing.html","telephone":"+1-774-686-9306","email":"stradees@stradees.com","address":{"@type":"PostalAddress","streetAddress":"397 Williams Street","addressLocality":"Marlborough","addressRegion":"MA","postalCode":"01752","addressCountry":"US"},"areaServed":{"@type":"State","name":"Massachusetts"},"priceRange":"$"}
+</script>
+</head>
+<body>.
        Se seu head completo tiver mais tags (title, meta og, etc), cole-as aqui no arquivo final. -->
 
   <style>
